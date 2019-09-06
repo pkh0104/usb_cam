@@ -938,6 +938,8 @@ void UsbCam::init_device(int image_width, int image_height, int framerate)
   image_width = fmt.fmt.pix.width;
   image_height = fmt.fmt.pix.height;
 
+#if 0
+  // Block for HMOVIS CSI camera.
   struct v4l2_streamparm stream_params;
   memset(&stream_params, 0, sizeof(stream_params));
   stream_params.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
@@ -952,6 +954,7 @@ void UsbCam::init_device(int image_width, int image_height, int framerate)
     ROS_WARN("Couldn't set camera framerate");
   else
     ROS_DEBUG("Set framerate to be %i", framerate);
+#endif
 
   switch (io_)
   {
